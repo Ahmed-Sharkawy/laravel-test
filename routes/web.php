@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\home;
-use App\Http\Controllers\product;
+// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,23 +21,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix("home")->group(function () {
-    Route::get("index", [home::class, "index"]);
-    Route::get("add",  [home::class, "add"])->name("home.add");
-    Route::post("stor", [home::class, "stor"]);
-    Route::get("delete/{id}", [home::class, "delete"]);
-    Route::get("edit/{id}", [home::class, "edit"]);
-    Route::post("update", [home::class, "update"]);
-});
+// Route::prefix("home")->group(function () {
+//     Route::get("index", [HomeController::class, "index"]);
+//     Route::get("add",  [HomeController::class, "add"])->name("home.add");
+//     Route::post("stor", [HomeController::class, "stor"]);
+//     Route::get("delete/{id}", [HomeController::class, "delete"]);
+//     Route::get("edit/{id}", [HomeController::class, "edit"]);
+//     Route::post("update", [HomeController::class, "update"]);
+// });
 
 
+// Route::prefix("product")->group(function () {
+    //     Route::get("index", [ProductController::class, "index"]);
+    //     Route::get("add", [ProductController::class, "add"]);
+    //     Route::post("stor", [ProductController::class, "stor"]);
+    //     Route::get("edit/{id}", [ProductController::class, "edit"]);
+    //     Route::post("update", [ProductController::class, "update"]);
+    //     Route::get("delete/{id}", [ProductController::class, "delete"]);
+    // });
 
+Route::resource("home",CrudController::class);
 
-Route::prefix("product")->group(function () {
-    Route::get("index", [product::class, "index"]);
-    Route::get("add", [product::class, "add"]);
-    Route::post("stor", [product::class, "stor"]);
-    Route::get("edit/{id}", [product::class, "edit"]);
-    Route::post("update", [product::class, "update"]);
-    Route::get("delete/{id}", [product::class, "delete"]);
-});
+Route::resource("product",ProductsController::class);

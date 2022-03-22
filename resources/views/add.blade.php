@@ -10,7 +10,7 @@
 
   @error("title")<h1>{{$message}}</h1>@enderror
   @error("age")<h1>{{$message}}</h1>@enderror
-  <form action="{{url("home/stor")}}" method="post">
+  <form action="{{route("home.store")}}" method="post">
     @csrf
     <input type="text" name="title">
     <input type="number" name="age">

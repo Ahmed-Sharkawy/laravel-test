@@ -7,12 +7,13 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="{{url("product/update")}}" method="post">
+  <form action="{{route("product.update",$res_product->id)}}" method="post">
     @csrf
-    <input type="hidden" name="id" value="{{$res2->id}}">
-    <input type="text" name="name" value="{{$res2->name}}">
+    @method("PUT")
+    {{-- <input type="hidden" name="id" value="{{$res_product->id}}"> --}}
+    <input type="text" name="name" value="{{$res_product->name}}">
     <select name="category_id">
-      @foreach ($res1 as $val)
+      @foreach ($res_category as $val)
       <option value="{{$val->id}}">{{$val->title}}</option>
       @endforeach
     </select>

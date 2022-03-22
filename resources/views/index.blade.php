@@ -17,7 +17,7 @@
 
     <div class="container">
       <table class="table">
-        <a href="{{route("home.add")}}">add</a>
+        <a href="{{route("home.create")}}">add</a>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -34,8 +34,13 @@
             <th scope="row">{{$val->id}}</th>
             <td>{{$val->title}}</td>
             <td>{{$val->age}}</td>
-            <th><a href="{{url("home/edit/$val->id")}}">update</a></th>
-            <th><a href="{{url("home/delete/$val->id")}}">delete</a></th>
+            <th><a href="{{route("home.edit",$val->id)}}">update</a></th>
+            <th><form action="{{route("home.destroy",$val->id)}}" method="post">
+              @csrf
+              @method("DELETE")
+              <button>Delete</button>
+            </form>
+          </th>
           </tr>
           @endforeach
 
